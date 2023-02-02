@@ -1,18 +1,69 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  name:{
-        type: String,
-        required: [true, 'please provide a name'],
-        maxLength: [40, 'name should be under 40 characters'],
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [false, "please provide a name"],
     },
-    email:{
+    photo: {
         type: String,
-        required: [true, 'please provide a email'],
-        validate: [validator.isEmail, 'please enter email in correct format'],
-        unique: true,
-    }
- });
+    },
+    phone: {
+      type: String,
+      required: [true, "please provide a phone"],
+      unique: true,
+    },
+    age: {
+      type: String,
+      required: false,
+    },
+    targetLocation: {
+      type: String,
+      required: false,
+    },
+    lookingFor: {
+      type: String,
+      required: false,
+    },
+    interest: {
+      type: Array,
+    },
+    activated: {
+        type: Boolean,
+        default: false,
+        required: false,
+    },
+    haveFriends: {
+      type: Boolean,
+      default: false
+  },
+  worryThings: {
+      type: Boolean,
+      default: false
+  },
+  loveParties: {
+      type: Boolean,
+      default: false
+  },
+  believeArt: {
+      type: Boolean,
+      default: false
+  },
+  centerOfAttraction: {
+      type: Boolean,
+      default: false
+  },
+  easilyIrritate: {
+      type: Boolean,
+      default: false
+  },
+  comfortableAroundPeople: {
+      type: Boolean,
+      default: false
+  }
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model("User", userSchema);
