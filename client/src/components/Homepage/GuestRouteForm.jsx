@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetails } from "../../store/UserDetailSlice";
 import { getRoommateListRespone } from '../../http/index';
+import { Link } from 'react-router-dom';
+import Navbar from "../Navbar/Navbar";
 
 export const GuestRouteForm = () => {
   const { userName, age, target_location, interests, lookingFor } =  useSelector((state) => state.UserDetailSlice);
@@ -162,12 +164,14 @@ export const GuestRouteForm = () => {
             </label>
           </div>
 
+        <Link to="/feed" className="flex flex-row justify-center ">
           <button
             className="mt-4 bg-purple-500 text-white py-2 px-6 rounded-md hover:bg-purple-600 "
             onClick={submitUserDetails}
           >
-            Login
+            Submit
           </button>
+        </Link>
         </div>
       </div>
     </>
