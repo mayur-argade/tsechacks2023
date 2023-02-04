@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const hashService = require("./hash-service");
 const smssid = "AC72a1bffe91111f737b3b24c0ffba4178";
-const smsAuthToken = "48c4d9ef44377c0cae40bf8d46bf7e90";
+const smsAuthToken = "237471071c0e4a7c5863053bbad84d31";
 const twilio = require("twilio")(smssid, smsAuthToken, {
   lazyLoading: true,
 });

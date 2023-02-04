@@ -8,21 +8,20 @@ exports.sendotp = async (req, res) => {
   // get phone number
   const { phone } = req.body;
 
-  // validate phone number
   if (!phone) {
     return res.status(400).json({ message: "Phone field is mandatory" });
   }
 
-  // generate random OTP
+  // generate random number using crypto module
   const otp = otpService.generateOtp();
 
-  // hash OTP and calculate expiry time
+  // generate hash for otp
   const ttl = 1000 * 60 * 2;
   const expires = Date.now() + ttl;
   const data = `${phone}.${otp}.${expires}`;
   const hash = hashService.hashotp(data);
 
-  // send OTP via sms
+  // send otp
   try {
     await otpService.sendOtp(phone, otp);
     return res.json({
@@ -31,7 +30,7 @@ exports.sendotp = async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    return res.status(400).json({ message: "Failed to send OTP" });
+    return res.status(400).json({ message: "Error sending OTP" });
   }
 };
 

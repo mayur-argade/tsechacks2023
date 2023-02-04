@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { FeedPage } from './components/Feed/FeedPage';
 import Navbar from './components/Navbar/Navbar';
-import { FlatList } from './components/Feed/Flat/FlatList';
+import { FlatList } from './components/Feedz';
 import { RoomMatesList } from './components/Feed/RoomMates/RoomMatesList';
 
 function App() {
